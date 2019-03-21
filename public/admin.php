@@ -2,30 +2,20 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006-2018 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-Route::get('think', function () {
-    return 'hello,ThinkPHP5!';
-});
+// [ 应用入口文件 ]
+namespace think;
 
-/**
-	* 注册GET路由
-	* @access public
-	* @param  string    $rule 路由规则
-	* @param  mixed     $route 路由地址
-	* @param  array     $option 路由参数
-	* @param  array     $pattern 变量规则
-	* @return RuleItem
-*/
+// 加载基础文件
+require __DIR__ . '/../thinkphp/base.php';
 
-Route::get('hello/[:name]', 'index/hello');
-Route::get('login$', 'admin/AdminLogin/index',['ext' => 'html']);
+// 支持事先使用静态方法设置Request对象和Config对象
 
-return [
-
-];
+// 执行应用并响应
+Container::get('app')->run()->send();
